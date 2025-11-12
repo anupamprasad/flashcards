@@ -1,0 +1,147 @@
+.study-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: min(640px, 90vw);
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+}
+
+header h1 {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  margin: 0;
+}
+
+.deck-progress {
+  margin: 0.25rem 0 0;
+  color: #4a5568;
+  font-weight: 500;
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.flashcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: min(100%, 420px);
+  height: clamp(240px, 55vh, 320px);
+  border-radius: 24px;
+  border: none;
+  background: linear-gradient(160deg, #ffffff 0%, #f3f4f6 100%);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+  color: #1f2933;
+  padding: 2.5rem 2rem;
+  cursor: pointer;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.flashcard:hover,
+.flashcard:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
+}
+
+.flashcard:focus-visible {
+  outline: 3px solid #4f46e5;
+  outline-offset: 4px;
+}
+
+.flashcard-label {
+  font-size: 0.875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.flashcard-word {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.flashcard.flipped {
+  background: linear-gradient(160deg, #eef2ff 0%, #e0e7ff 100%);
+}
+
+.assessment-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.assessment-button {
+  flex: 1 1 180px;
+  padding: 0.85rem 1rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.assessment-button:hover,
+.assessment-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+}
+
+.assessment-button.correct {
+  background: linear-gradient(140deg, #22c55e 0%, #16a34a 100%);
+  color: #ffffff;
+}
+
+.assessment-button.incorrect {
+  background: linear-gradient(140deg, #f87171 0%, #ef4444 100%);
+  color: #ffffff;
+}
+
+.actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.next-button {
+  padding: 0.85rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(140deg, #4f46e5 0%, #4338ca 100%);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.next-button:hover,
+.next-button:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(67, 56, 202, 0.35);
+}
+
+@media (max-width: 480px) {
+  .flashcard {
+    height: clamp(220px, 55vh, 260px);
+    padding: 2rem 1.5rem;
+  }
+
+  .flashcard-word {
+    font-size: clamp(1.75rem, 8vw, 2.4rem);
+  }
+}
