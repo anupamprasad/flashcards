@@ -100,6 +100,7 @@ function App() {
 
   const handleNextCard = () => {
     playClick()
+    setCurrentIndex((previous) => (previous + 1) % cards.length)
     setIsFlipped(false)
   }
 
@@ -164,7 +165,6 @@ function App() {
           type="button"
           className="next-button"
           onClick={handleNextCard}
-          disabled
         >
           Next
         </button>

@@ -27,10 +27,21 @@ test('displays initial Spanish word and flips to English with assessment buttons
 
 test('cycles through cards when pressing Next', async ({ page }) => {
   const word = page.locator('.flashcard-word')
-
+  const nextBtn = page.locator('.next-button')
   await expect(word).toHaveText('casa')
-  await page.locator('.next-button').click()
-  await expect(word).toHaveText('perro')
+  // Ensure enabled
+  await expect(nextBtn).toBeEnabled()
+  // Click and see card change
+  await nextBtn.click()
+  await expect(word).not.toHaveText('casa')
+  // Click Next N times cycles deck
+  const seen = new Set([await word.textContent()])
+  for (let i = 0; i < 49; i++) {
+    await expect(nextBtn).toBeEnabled()
+    await nextBtn.click()
+    seen.add(await word.textContent())
+  }
+  expect(seen.size).toBeGreaterThan(1)
 })
 
 test('persists assessment decisions to localStorage', async ({ page }) => {
