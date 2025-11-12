@@ -9,7 +9,7 @@ const STORAGE_KEY = 'spanish-flashcards:deck'
 type PersistedCard = Pick<Flashcard, 'id' | 'is_known'>
 
 function createSeedCards(): Flashcard[] {
-  return flashcardSeed.map((card) => ({ ...card }))
+  return []
 }
 
 function loadInitialCards(): Flashcard[] {
