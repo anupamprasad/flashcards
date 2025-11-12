@@ -130,6 +130,9 @@ function App() {
           onClick={handleFlip}
           aria-pressed={isFlipped}
         >
+          <span className="flashcard-label">
+            {isFlipped ? 'English' : 'Spanish'}
+          </span>
           <span className="flashcard-word">
             {isFlipped
               ? currentCard.english_translation
