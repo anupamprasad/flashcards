@@ -164,6 +164,7 @@ function App() {
           type="button"
           className="next-button"
           onClick={handleNextCard}
+          disabled
         >
           Next
         </button>
