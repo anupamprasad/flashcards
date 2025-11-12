@@ -100,7 +100,6 @@ function App() {
 
   const handleNextCard = () => {
     playClick()
-    setCurrentIndex((previous) => (previous + 1) % totalCards)
     setIsFlipped(false)
   }
 
