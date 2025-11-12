@@ -1,15 +1,91 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { flashcards as flashcardSeed } from './data/flashcards.ts'
 import type { Flashcard } from './types/flashcard.ts'
 import { useClickSound } from './hooks/useClickSound.ts'
 import './App.css'
 
+const STORAGE_KEY = 'spanish-flashcards:deck'
+
+type PersistedCard = Pick<Flashcard, 'id' | 'is_known'>
+
+function createSeedCards(): Flashcard[] {
+  return flashcardSeed.map((card) => ({ ...card }))
+}
+
+function loadInitialCards(): Flashcard[] {
+  if (typeof window === 'undefined') {
+    return createSeedCards()
+  }
+
+  try {
+    const storedValue = window.localStorage.getItem(STORAGE_KEY)
+
+    if (!storedValue) {
+      return createSeedCards()
+    }
+
+    const parsed: unknown = JSON.parse(storedValue)
+
+    if (!Array.isArray(parsed)) {
+      return createSeedCards()
+    }
+
+    const storedMap = new Map<number, boolean>()
+
+    parsed.forEach((entry) => {
+      if (isPersistedCard(entry)) {
+        storedMap.set(entry.id, entry.is_known)
+      }
+    })
+
+    if (storedMap.size === 0) {
+      return createSeedCards()
+    }
+
+    return flashcardSeed.map((card) => ({
+      ...card,
+      is_known: storedMap.has(card.id)
+        ? storedMap.get(card.id) ?? card.is_known
+        : card.is_known,
+    }))
+  } catch {
+    return createSeedCards()
+  }
+}
+
+function isPersistedCard(value: unknown): value is PersistedCard {
+  if (typeof value !== 'object' || value === null) {
+    return false
+  }
+
+  const { id, is_known } = value as Partial<Record<keyof PersistedCard, unknown>>
+
+  return typeof id === 'number' && typeof is_known === 'boolean'
+}
+
 function App() {
-  const [cards, setCards] = useState<Flashcard[]>(flashcardSeed)
+  const [cards, setCards] = useState<Flashcard[]>(() => loadInitialCards())
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
 
   const playClick = useClickSound()
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const payload: PersistedCard[] = cards.map(({ id, is_known }) => ({
+      id,
+      is_known,
+    }))
+
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload))
+    } catch {
+      // Ignore persistence failures (e.g., storage quota exceeded)
+    }
+  }, [cards])
 
   const totalCards = cards.length
   const currentCard = useMemo(

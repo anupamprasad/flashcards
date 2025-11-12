@@ -37,8 +37,8 @@ This phase introduces state management persistence and the core learning mechani
 
 | Item | Acceptance Criteria |
 | :--- | :--- |
-| $\square$ **Local Storage Integration** | The current deck status (which cards are marked `is_known`) is saved to `localStorage` upon any change. |
-| $\square$ **Data Loading** | On application load, the deck state is correctly retrieved from `localStorage` before the hardcoded defaults are used. |
+| ✅ **Local Storage Integration** | The current deck status (which cards are marked `is_known`) is saved to `localStorage` upon any change. |
+| ✅ **Data Loading** | On application load, the deck state is correctly retrieved from `localStorage` before the hardcoded defaults are used. |
 
 ### 4. Learning & Redo Mode
 
