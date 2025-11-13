@@ -38,4 +38,5 @@ client/playwright-report/
 client/test-results/
 playwright-report/
 test-results/
+.cursor/
 
