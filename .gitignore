@@ -40,4 +40,6 @@ playwright-report/
 test-results/
 .cursor/
 .cursor/mcp.json
+**/mcp.json
+mcp.json
 
