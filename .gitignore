@@ -39,4 +39,5 @@ client/test-results/
 playwright-report/
 test-results/
 .cursor/
+.cursor/mcp.json
 
