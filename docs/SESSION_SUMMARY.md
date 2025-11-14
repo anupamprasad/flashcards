@@ -1,5 +1,9 @@
 # Project Session Summary - Spanish Flashcards App
 
+## 🌐 Live Application
+
+**Production URL**: https://flashcards-d8plhalqq-anupams-projects-4f988786.vercel.app
+
 ## Overview
 This document summarizes all work completed during the development session for the Spanish Flashcards web application.
 
