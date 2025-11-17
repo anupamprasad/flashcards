@@ -3,3 +3,5 @@
  */
 export const DECK_STORAGE_KEY = 'spanish-flashcards:deck'
 
+export const STATS_STORAGE_KEY = 'spanish-flashcards:stats'
+

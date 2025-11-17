@@ -1,3 +1,16 @@
+.app-shell {
+  width: min(720px, 100vw);
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.app-header {
+  text-align: center;
+}
+
 .study-view {
   display: flex;
   flex-direction: column;
@@ -7,11 +20,7 @@
   margin: 0 auto;
 }
 
-header {
-  text-align: center;
-}
-
-header h1 {
+.app-header h1 {
   font-size: clamp(2rem, 5vw, 2.75rem);
   margin: 0;
 }
@@ -20,6 +29,46 @@ header h1 {
   margin: 0.25rem 0 0;
   color: #4a5568;
   font-weight: 500;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(12px);
+}
+
+.nav-button {
+  flex: 1 1 0;
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 0.75rem;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.nav-button:hover,
+.nav-button:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.12);
+}
+
+.nav-button-active {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+.app-main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
 .card-container {
@@ -111,6 +160,174 @@ header h1 {
   color: #ffffff;
 }
 
+.placeholder-view {
+  padding: 2rem 1.5rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  text-align: center;
+}
+
+.quiz-view {
+  text-align: left;
+}
+
+.quiz-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.quiz-mode-toggle {
+  display: inline-flex;
+  padding: 0.25rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.quiz-mode-button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.quiz-mode-button-active {
+  background: #4f46e5;
+  color: #ffffff;
+}
+
+.quiz-question {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+
+.quiz-question-word {
+  font-weight: 600;
+}
+
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.quiz-option {
+  padding: 0.75rem 0.9rem;
+  border-radius: 999px;
+  border: none;
+  background: #eef2ff;
+  color: #111827;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.quiz-option:hover,
+.quiz-option:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.25);
+}
+
+.quiz-option-correct {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.quiz-option-incorrect {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.quiz-fill-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.quiz-input {
+  flex: 1 1 180px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+}
+
+.quiz-submit-button {
+  border-radius: 999px;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  background: linear-gradient(140deg, #4f46e5 0%, #4338ca 100%);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.quiz-feedback {
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.quiz-feedback-correct {
+  color: #16a34a;
+}
+
+.quiz-feedback-incorrect {
+  color: #dc2626;
+}
+
+.stats-view {
+  text-align: left;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.stats-card {
+  padding: 1rem 1.1rem;
+  border-radius: 16px;
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.stats-primary-value {
+  margin: 0.25rem 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.stats-secondary-text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.stats-secondary-value {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.stats-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9ca3af;
+}
+
 .actions {
   width: 100%;
   display: flex;
@@ -143,5 +360,17 @@ header h1 {
 
   .flashcard-word {
     font-size: clamp(1.75rem, 8vw, 2.4rem);
+  }
+  
+  .app-shell {
+    padding: 1.25rem 1rem;
+  }
+
+  .app-nav {
+    padding: 0.25rem;
+  }
+
+  .placeholder-view {
+    padding: 1.5rem 1.25rem;
   }
 }

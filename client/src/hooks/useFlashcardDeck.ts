@@ -5,6 +5,10 @@ import type { Flashcard } from '../types/flashcard.ts'
 
 interface FlashcardDeck {
   /**
+   * All flashcards in the current deck, including their knowledge state.
+   */
+  cards: Flashcard[]
+  /**
    * The flashcard currently active in the study flow. `null` when the deck is empty.
    */
   currentCard: Flashcard | null
@@ -103,6 +107,7 @@ export function useFlashcardDeck(): FlashcardDeck {
   )
 
   return {
+    cards,
     currentCard,
     currentIndex,
     totalCards,
