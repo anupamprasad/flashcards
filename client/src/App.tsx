@@ -121,7 +121,7 @@ function App() {
   return (
     <div className="app-shell">
       <header className="app-header">
-        <h1>Spanish Cards Game</h1>
+        <h1>Language Converter</h1>
         {activeView === 'study' && currentCard && (
           <p className="deck-progress">
             Card {currentIndex + 1} of {totalCards}
